@@ -23,7 +23,11 @@
                         @endforeach
                 </div>
             
-                <button>LOAD MORE</button>
+                <button>
+                    <a class="reset-a" href="{{ route('comics.create') }}">
+                        AGGIUNGI FUMETTO
+                    </a>
+                </button>
     
             </div>
         </div>

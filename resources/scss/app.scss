@@ -71,6 +71,23 @@ $blue-dc: #0282f9;
 .text-end{
     text-align: end;
 }
+
+.border-black{
+    border: 2px solid black;
+}
+
+.h-2rem{
+    height: 2rem;
+}
+
+.py-2rem{
+    padding: 2rem 0;
+}
+
+.reset-a{
+    text-decoration: none;
+    color: inherit;
+}
 // HEADER
 
 header{
