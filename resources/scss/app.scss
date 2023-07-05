@@ -92,6 +92,10 @@ $blue-dc: #0282f9;
 .ml-1rem{
     margin-left: 1rem;
 }
+
+.m-1rem{
+    margin: 1rem;
+}
 // HEADER
 
 header{
@@ -338,5 +342,11 @@ tr{
 .to-home-link{
     padding: 1rem;
     background-color: $blue-dc;
+    color: white;
+}
+
+.delete-button{
+    background-color: red;
+    padding: 1rem;
     color: white;
 }

@@ -85,13 +85,22 @@
     </div>
 
     <div>
-        <a class="to-home-link" href="/">
+        <a class="m-1rem to-home-link" href="/">
             TORNA ALLA HOME
         </a>
 
-        <a class="to-home-link ml-1rem" href="{{ route('comics.edit', $comic->id) }}">
+        <a class="m-1rem to-home-link" href="{{ route('comics.edit', $comic->id) }}">
             MODIFICA QUESTO FUMETTO
         </a>
+
+        <form class="m-1rem" action="{{ route('comics.destroy', $comic->id) }}" method="post">
+        
+            @csrf
+
+            @method('DELETE')
+
+            <button class="delete-button" type="submit">CANCELLA IL PRODOTTO</button>
+        </form>
     </div>
 
     
