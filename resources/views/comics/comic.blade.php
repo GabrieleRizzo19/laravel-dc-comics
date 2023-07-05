@@ -88,6 +88,10 @@
         <a class="to-home-link" href="/">
             TORNA ALLA HOME
         </a>
+
+        <a class="to-home-link ml-1rem" href="{{ route('comics.edit', $comic->id) }}">
+            MODIFICA QUESTO FUMETTO
+        </a>
     </div>
 
     

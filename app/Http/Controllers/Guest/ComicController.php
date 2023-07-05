@@ -90,7 +90,14 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            "headerLinks" => config('store.headerLinks'),
+            'comic' => Comic::findOrFail($id),
+            'iconBarItems' => config('store.iconBarItems'),
+            'footerColumnLinks' => config('store.footerColumnLinks')
+            ];
+
+        return view('comics.edit', $data);
     }
 
     /**
@@ -102,7 +109,20 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $comic = Comic::findOrFail($id);
+
+        $comic->title = $data['title'];
+        $comic->description = $data['description'];
+        $comic->thumb = $data['thumb'];
+        $comic->price = $data['price'];
+        $comic->series = $data['series'];
+        $comic->sale_date = $data['sale_date'];
+        $comic->type = $data['type'];
+        $comic->update();
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
