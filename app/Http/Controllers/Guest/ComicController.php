@@ -119,8 +119,8 @@ class ComicController extends Controller
 
         $request->validate([
             'title' => 'required|min:5|max:50',
-            'thumb' => 'required|active_url',
-            'price' => 'required'
+            'thumb' => 'required',
+            'price' => 'required',
         ]);
 
         $data = $request->all();
