@@ -4,6 +4,19 @@
 
     <div class="container">
 
+        @if ($errors->any())
+
+            <div>
+                <ul class="error-list">
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+
+                </ul>
+            </div>
+            
+        @endif
+
         <form class="py-2rem" action="{{ route('comics.store') }}" method="post">
         
             @csrf
