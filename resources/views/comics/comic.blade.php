@@ -45,13 +45,31 @@
                         <tr>
                             <td class="w-20">Art by:</td>
                             <td>
-                                PLACEHOLDER
+                                @php
+                                    $writers_array = json_decode($comic['writers'])
+                                @endphp
+                                @foreach ($writers_array as $writer)
+                                    @if ($loop->last)
+                                        <a href="">{{ $writer }}</a>
+                                    @else
+                                    <a href="">{{ $writer }}</a>,
+                                    @endif
+                                @endforeach
                             </td>
                         </tr>
                         <tr>
                             <td class="w-20">Written by:</td>
                             <td>
-                                PLACEHOLDER
+                                @php
+                                    $artists_array = json_decode($comic['artists'])
+                                @endphp
+                                @foreach ($artists_array as $artist)
+                                    @if ($loop->last)
+                                        <a href="">{{ $artist }}</a>
+                                    @else
+                                    <a href="">{{ $artist }}</a>,
+                                    @endif
+                                @endforeach
                             </td>
                         </tr>
                         
