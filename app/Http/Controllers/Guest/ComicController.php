@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -44,35 +46,16 @@ class ComicController extends Controller
         return view('comics.create', $data);
     }
 
-    private function validateComic($data){
-
-        $validator = Validator::make($data,[
-            'title' => 'required|min:5|max:40',
-            'description' => 'required|min:10',
-            'thumb' => 'required|active_url',
-            'price' => 'required',
-            'series' => 'required|min:2|max:20',
-            'sale_date' => 'required|date',
-            'type' => 'required'
-        ],[
-            'title.required' => 'Il titolo  è obbligatorio',
-            'title.min' => 'Il titolo deve avere almeno 5 caratteri',
-            'title.max' => 'Il titolo non può essere più lungo di 40 caratteri'
-        ])->validate();
-
-        return $validator;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
 
-        $data = $this->validateComic($request->all());
+        $data = $request->validated();
 
         $newComic = new Comic();
         
@@ -125,10 +108,10 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateComicRequest $request, $id)
     {
 
-        $data = $this->validateComic($request->all());
+        $data = $request->validated();
 
         $comic = Comic::findOrFail($id);
         
