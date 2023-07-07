@@ -72,6 +72,10 @@ $blue-dc: #0282f9;
     text-align: end;
 }
 
+.text-center{
+    text-align: center;
+}
+
 .border-black{
     border: 2px solid black;
 }
@@ -99,6 +103,10 @@ $blue-dc: #0282f9;
 
 .mt-1rem{
     margin-top: 1rem;
+}
+
+.my-1rem{
+    margin: 1rem auto;
 }
 // HEADER
 
@@ -343,19 +351,37 @@ tr{
     }
 }
 
+.comic-page-button {
+    
+    button{
+        padding: 1rem;
+        margin: auto 1rem;
+        -webkit-margin-collapse: collapse;
+    }
+
+    a, button{
+        font-size: 1rem;
+    }
+
+    form{
+        display: inline-block;
+    }
+
+    
+}
+
 .comic-page-button a,button{
     display: inline-block;
+    text-decoration: none;
 }
 
 .to-home-link{
-    padding: 1rem;
     background-color: $blue-dc;
     color: white;
 }
 
 .delete-button{
     background-color: red;
-    padding: 1rem;
     color: white;
 }
 

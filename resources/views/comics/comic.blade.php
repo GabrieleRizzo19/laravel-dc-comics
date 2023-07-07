@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page-title', 'Action Comics #1000: The Deluxe Edition')
+@section('page-title', $comic['title'])
 @section('content')
 
     <div class="blue-bar">
@@ -102,16 +102,21 @@
         </div>
     </div>
 
-    <div class="comic-page-button">
-        <a class="m-1rem to-home-link" href="/">
-            TORNA ALLA HOME
-        </a>
-
-        <a class="m-1rem to-home-link" href="{{ route('comics.edit', $comic->id) }}">
-            MODIFICA QUESTO FUMETTO
-        </a>
-
-        <form class="m-1rem" action="{{ route('comics.destroy', $comic->id) }}" method="post">
+    <div class="comic-page-button d-flex align-itemse-center justify-content-center my-1rem">
+        
+        <button>
+            <a class="to-home-link" href="{{ route('comics.edit', $comic->id) }}">
+                MODIFICA QUESTO FUMETTO
+            </a>    
+        </button>
+        
+        <button>
+            <a class="to-home-link" href="/">
+                TORNA ALLA HOME
+            </a>
+        </button>
+        
+        <form action="{{ route('comics.destroy', $comic->id) }}" method="post">
         
             @csrf
 

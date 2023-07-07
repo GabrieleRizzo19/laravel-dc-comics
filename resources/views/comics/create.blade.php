@@ -1,10 +1,16 @@
 @extends('layouts.app');
 
+@section('page-title', 'Nuovo fumetto')
+
 @section('content')
 
-    <div class="container">
+    <div class="container py-2rem">
 
-        <form class="py-2rem" action="{{ route('comics.store') }}" method="post">
+        <h1 class="text-center">
+            AGGIUNGI NUOVO FUMETTO
+        </h1>
+
+        <form action="{{ route('comics.store') }}" method="post">
         
             @csrf
         

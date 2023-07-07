@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'Modifica fumetto')
+
 @section('content')
 
     <div class="container">
@@ -51,7 +53,7 @@
             @error('type')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-            
+
             <input class="w-100 border-black h-2rem mt-1rem" type="submit" value="INVIA">
 
         </form>
