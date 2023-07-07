@@ -96,6 +96,10 @@ $blue-dc: #0282f9;
 .m-1rem{
     margin: 1rem;
 }
+
+.mt-1rem{
+    margin-top: 1rem;
+}
 // HEADER
 
 header{
@@ -356,11 +360,19 @@ tr{
 }
 
 
-// ERROR LIST
+//  FORM ERROR
 
 .error-list{
     list-style: none;
     color: red;
     padding-top: 2rem;
     padding-left: 0;
+}
+
+.invalid-feedback{
+    color: red;
+}
+
+form input:last-child{
+    cursor: pointer;
 }
