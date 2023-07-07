@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="comic-page-button">
         <a class="m-1rem to-home-link" href="/">
             TORNA ALLA HOME
         </a>

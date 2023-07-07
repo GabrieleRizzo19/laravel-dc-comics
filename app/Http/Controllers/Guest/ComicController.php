@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ComicController extends Controller
 {
@@ -42,6 +44,25 @@ class ComicController extends Controller
         return view('comics.create', $data);
     }
 
+    private function validateComic($data){
+
+        $validator = Validator::make($data,[
+            'title' => 'required|min:5|max:40',
+            'description' => 'required|min:10',
+            'thumb' => 'required|active_url',
+            'price' => 'required',
+            'series' => 'required|min:2|max:20',
+            'sale_date' => 'required|date',
+            'type' => 'required'
+        ],[
+            'title.required' => 'Il titolo  è obbligatorio',
+            'title.min' => 'Il titolo deve avere almeno 5 caratteri',
+            'title.max' => 'Il titolo non può essere più lungo di 40 caratteri'
+        ])->validate();
+
+        return $validator;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,22 +72,12 @@ class ComicController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required|min:5|max:50',
-            'thumb' => 'required',
-            'price' => 'required',
-        ]);
-
-        $data = $request->all();
+        $data = $this->validateComic($request->all());
 
         $newComic = new Comic();
-        $newComic->title = $data['title'];
-        $newComic->description = $data['description'];
-        $newComic->thumb = $data['thumb'];
-        $newComic->price = $data['price'];
-        $newComic->series = $data['series'];
-        $newComic->sale_date = $data['sale_date'];
-        $newComic->type = $data['type'];
+        
+        $newComic->fill($data);
+
         $newComic->save();
 
         return redirect()->route('comics.show', $newComic->id);
@@ -117,24 +128,13 @@ class ComicController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'title' => 'required|min:5|max:50',
-            'thumb' => 'required',
-            'price' => 'required',
-        ]);
-
-        $data = $request->all();
+        $data = $this->validateComic($request->all());
 
         $comic = Comic::findOrFail($id);
+        
+        $comic->fill($data);
 
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
-        $comic->update();
+        $comic->save();
 
         return redirect()->route('comics.show', $comic->id);
     }

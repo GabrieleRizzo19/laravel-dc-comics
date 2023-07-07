@@ -339,6 +339,10 @@ tr{
     }
 }
 
+.comic-page-button a,button{
+    display: inline-block;
+}
+
 .to-home-link{
     padding: 1rem;
     background-color: $blue-dc;
